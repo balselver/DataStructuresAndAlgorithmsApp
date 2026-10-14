@@ -18,8 +18,8 @@ namespace DataStructures.Graph.AdjancencySet
             //grafa ilk eklenen düğüm referans düğüm
             vertices[this.First()];
 
-        public IEnumerable<IGraphVertex<T>> VertexAsEnumerable =>
-            vertices.Select(x => x.Value);
+        public IEnumerable<IGraphVertex<T>> VerticesAsEnumerable =>
+            vertices.Select(x => x.Value);       
 
         public Graph(IEnumerable<T> collection)
         {

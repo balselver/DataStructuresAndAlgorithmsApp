@@ -13,11 +13,115 @@ namespace Apps
     {
         static void Main(string[] args)
         {
-           
-
+            
             Console.ReadKey();
         }
 
+        private static void WeightedDiGraphApp()
+        {
+            var graph = new DataStructures
+                .Graph
+                .AdjancencySet
+                .WeightedDiGraph<char, int>(new char[] { 'A', 'B', 'C', 'D', 'E' });
+
+            Console.WriteLine($"Number of vertex in this graph : {graph.Count}");
+
+            graph.AddEdge('A', 'C', 12);
+            graph.AddEdge('A', 'D', 60);
+            graph.AddEdge('B', 'A', 10);
+            graph.AddEdge('C', 'D', 32);
+            graph.AddEdge('C', 'B', 20);
+            graph.AddEdge('E', 'A', 7);
+
+            Console.WriteLine("Is an edge between A and B ? : {0}",
+                graph.HasEdge('A', 'B') ? "Yes." : "No !");
+
+            Console.WriteLine("Is an edge between B and A ? : {0}",
+                graph.HasEdge('B', 'A') ? "Yes." : "No !");
+
+            foreach (var vertexKey in graph)
+            {
+                Console.WriteLine(vertexKey);
+                foreach (char key in graph.GetVertex(vertexKey))
+                {
+                    var nodeU = graph.GetVertex(vertexKey);
+                    var nodev = graph.GetVertex(key);
+                    var w = nodeU.GetEdge(nodev).Weight<int>();
+
+                    Console.WriteLine($"   {vertexKey} -" +
+                        $"   ({w}) -" +
+                        $"   {key} ");
+                }
+            }
+        }
+        private static void DiGraphApp()
+        {
+            var graph = new DataStructures
+                .Graph
+                .AdjancencySet
+                .DiGraph<char>(new char[] { 'A', 'B', 'C', 'D', 'E' });
+
+            graph.AddEdge('B', 'A');
+            graph.AddEdge('A', 'D');
+            graph.AddEdge('D', 'E');
+            graph.AddEdge('C', 'D');
+            graph.AddEdge('C', 'E');
+            graph.AddEdge('C', 'A');
+            graph.AddEdge('C', 'B');
+
+            graph.RemoveVertex('C');
+
+            Console.WriteLine("ıs there an edge between A and B ? {0} ",
+                graph.HasEdge('A', 'B') ? "Yes." : "No!");
+
+            Console.WriteLine("ıs there an edge between B and A ? {0} ",
+                graph.HasEdge('B', 'A') ? "Yes." : "No!");
+
+            foreach (var key in graph)
+            {
+                Console.WriteLine(key);
+                foreach (char item in graph.GetVertex(key))
+                {
+                    Console.WriteLine($"   {item}");
+                }
+            }
+
+            Console.WriteLine($"Number of vertex in graph : {graph.Count}");
+        }
+        private static void WeightedGraphApp()
+        {
+            var graph = new DataStructures
+                .Graph
+                .AdjancencySet
+                .WeightedGraph<char, double>
+                (new char[] { 'A', 'B', 'C', 'D' });
+
+            graph.AddEdge('A', 'B', 1.2);
+            graph.AddEdge('A', 'D', 2.3);
+            graph.AddEdge('D', 'C', 5.5);
+
+
+            Console.WriteLine("Is there an edge between A and B ? {0}",
+                graph.HasEdge('A', 'B') ? "Yes." : "No!");
+
+            Console.WriteLine("Is there an edge between B and A ? {0}",
+                graph.HasEdge('B', 'A') ? "Yes." : "No!");
+
+            foreach (char vertex in graph)
+            {
+                Console.WriteLine(vertex);
+                foreach (char key in graph.GetVertex(vertex))//düğümlerin ilişkili olduğu düğümleri verir
+                {
+                    var node = graph.GetVertex(key);
+                    Console.WriteLine($" {vertex}-- " +
+                        //ağırlık bilgisi burada verildi
+                        $"{node.GetEdge(graph.GetVertex(vertex)).Weight<double>()}" +
+                        $" --{key}");
+                }
+            }
+
+            Console.WriteLine($"Number of vertex in graph : {graph.Count}");
+        }
         private static void NormalGraphApp()
         {
             var graph = new DataStructures
@@ -456,8 +560,7 @@ namespace Apps
             {
                 Console.WriteLine(item);
             }
-        }
-        
+        }       
 
     }
 }
