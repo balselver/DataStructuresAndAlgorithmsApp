@@ -13,8 +13,44 @@ namespace Apps
     {
         static void Main(string[] args)
         {
+            
             Console.ReadKey();
         }
+
+        private static void MİnimumSpanningTreePrimsApp()
+        {
+            var graph = new DataStructures
+                .Graph
+                .AdjancencySet
+                .WeightedGraph<int, int>();
+
+            for (int i = 0; i < 12; i++)
+                graph.AddVertex(i);
+
+            graph.AddEdge(0, 1, 4);
+            graph.AddEdge(0, 7, 8);
+            graph.AddEdge(1, 7, 11);
+            graph.AddEdge(7, 8, 7);
+            graph.AddEdge(1, 2, 8);
+            graph.AddEdge(7, 6, 1);
+            graph.AddEdge(2, 8, 2);
+            graph.AddEdge(8, 6, 6);
+            graph.AddEdge(6, 5, 2);
+            graph.AddEdge(2, 5, 4);
+            graph.AddEdge(2, 3, 7);
+            graph.AddEdge(3, 5, 14);
+            graph.AddEdge(3, 4, 9);
+            graph.AddEdge(5, 4, 10);
+
+            var algorithm = new DataStructures
+                .Graph
+                .MinimumSpanningTree
+                .Prims<int, int>();
+
+            algorithm.FindMinimumSpanningTree(graph)
+                .ForEach(edge => Console.WriteLine(edge));
+        }
+
         private static void BFSSearchAlgorithmApp()
         {
             var graph = new DataStructures
