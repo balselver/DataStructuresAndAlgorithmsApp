@@ -13,10 +13,39 @@ namespace Apps
     {
         static void Main(string[] args)
         {
-            
             Console.ReadKey();
         }
+        private static void BFSSearchAlgorithmApp()
+        {
+            var graph = new DataStructures
+                .Graph
+                .AdjancencySet
+                .Graph<int>();
 
+            for (int i = 0; i < 12; i++)
+                graph.AddVertex(i);
+
+            graph.AddEdge(0, 1);
+            graph.AddEdge(1, 4);
+            graph.AddEdge(0, 4);
+            graph.AddEdge(0, 2);
+            graph.AddEdge(2, 5);
+            graph.AddEdge(2, 10);
+            graph.AddEdge(10, 11);
+            graph.AddEdge(11, 9);
+            graph.AddEdge(2, 9);
+            graph.AddEdge(5, 7);
+            graph.AddEdge(7, 8);
+            graph.AddEdge(5, 8);
+            graph.AddEdge(5, 6);
+
+            var algortithm = new DataStructures
+                .Graph
+                .Search
+                .BreadthFirst<int>();
+
+            Console.WriteLine(algortithm.Find(graph, 23) ? "Yes." : "No !");
+        }
         private static void DFSSearchAlgorithmApp()
         {
             var graph = new DataStructures
