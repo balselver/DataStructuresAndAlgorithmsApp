@@ -14,7 +14,25 @@ namespace Apps
         static void Main(string[] args)
         {
             
+
             Console.ReadKey();
+        }
+
+        private static void SelectionSortAlgorithmsApp()
+        {
+            var array = new int[] { 16, 23, 44, 12, 55, 40, 6 };
+
+            Console.WriteLine("Sırasız dizi: ");
+            foreach (var item in array)
+                Console.WriteLine($"{item,-5}");
+
+            Console.WriteLine();
+
+            DataStructures.SortingAlgorithms.SelectionSort.Sort<int>(array);
+
+            Console.WriteLine("Sıralı dizi: ");
+            foreach (var item in array)
+                Console.WriteLine($"{item,-5}");
         }
 
         private static void MinimumSpanningTreeKruksalAlgorithmApp()
