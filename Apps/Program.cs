@@ -1,4 +1,5 @@
-﻿using DataStructures.LinkedList.DoublyLinkedList;
+﻿using CustomTypes;
+using DataStructures.LinkedList.DoublyLinkedList;
 using DataStructures.LinkedList.SinglyLinkedList;
 using DataStructures.Stack;
 using DataStructures.Tree.BinaryTree;
@@ -13,10 +14,178 @@ namespace Apps
     {
         static void Main(string[] args)
         {
-
+            
             Console.ReadKey();
         }
 
+        private static void CustomTypeSortingAlgorithmsApp()
+        {
+            //sıralama algoritmaları - Special type
+
+            var arr = new Student[]
+              {
+                    new Student(15,"Ayşe",2.40),
+                    new Student(16,"Sema",3.90),
+                    new Student(17,"Eren",2.50),
+                    new Student(18,"Fatma",2.65),
+                    new Student(19,"Omer",3.10),
+                    new Student(20,"Filiz",1.45),
+                    new Student(21,"Mete",3.80),
+                    new Student(22,"Merve",2.20),
+                    new Student(23,"Semih",2.80)
+              };
+
+
+            DataStructures.SortingAlgorithms.InsertionSort.Sort<Student>(arr);
+            foreach (var item in arr)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("-----------------");
+
+            DataStructures.SortingAlgorithms.InsertionSort.Sort<Student>(arr,
+                DataStructures.Shared.SortDirection.Descending);
+            foreach (var item in arr)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        private static void CustomTypeMaxHeapAndMinHeapApp()
+        {
+            var arr = new Student[]
+               {
+                    new Student(15,"Ayşe",2.40),
+                    new Student(16,"Sema",3.90),
+                    new Student(17,"Eren",2.50),
+                    new Student(18,"Fatma",2.65),
+                    new Student(19,"Omer",3.10),
+                    new Student(20,"Filiz",1.45),
+                    new Student(21,"Mete",3.80),
+                    new Student(22,"Merve",2.20),
+                    new Student(23,"Semih",2.80)
+               };
+            Console.WriteLine("Minheap-------");
+            var heap = new DataStructures
+                .Heap
+                .MinHeap<Student>(arr);
+            foreach (var item in heap)
+            {
+                Console.WriteLine(heap.DeleteMinMax());
+            }
+
+            Console.WriteLine("MaXHeap-------");
+            var maxHeap = new DataStructures
+                .Heap
+                .BinaryHeap<Student>(DataStructures.Shared.SortDirection.Descending, arr);
+            foreach (var item in maxHeap)
+            {
+                Console.WriteLine(maxHeap.DeleteMinMax());
+            }
+        }
+        private static void CustomTypeBSTApp()
+        {
+            var arr = new Student[]
+               {
+                    new Student(15,"Ayşe",2.40),
+                    new Student(16,"Sema",3.90),
+                    new Student(17,"Eren",2.50),
+                    new Student(18,"Fatma",2.65),
+                    new Student(19,"Omer",3.10),
+                    new Student(20,"Filiz",1.45),
+                    new Student(21,"Mete",3.80),
+                    new Student(22,"Merve",2.20),
+                    new Student(23,"Semih",2.80)
+               };
+            foreach (var item in arr)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("---------------");
+            var bst = new DataStructures
+                .Tree
+                .BST
+                .BST<Student>(arr);
+
+            foreach (var item in bst)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        private static void CustomTypeSinglyLinkedListApp()
+        {
+            var arr = new Student[]
+               {
+                    new Student(15,"Ayşe",2.40),
+                    new Student(16,"Sema",3.90),
+                    new Student(17,"Eren",2.50),
+                    new Student(18,"Fatma",2.65),
+                    new Student(19,"Omer",3.10),
+                    new Student(20,"Filiz",1.45),
+                    new Student(21,"Mete",3.80),
+                    new Student(22,"Merve",2.20),
+                    new Student(23,"Semih",2.80)
+               };
+
+            var linkedList = new DataStructures
+                .LinkedList
+                .SinglyLinkedList
+                .SinglyLinkedList<Student>(arr);
+
+            linkedList.AddAfter(linkedList.Head, new Student(99, "Yiğit", 4.00));
+
+            foreach (var item in linkedList)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        private static void CustomTypeArrayApp()
+        {
+            var arr = new Student[]
+                {
+                    new Student(15,"Ayşe",2.40),
+                    new Student(16,"Sema",3.90),
+                    new Student(17,"Eren",2.50),
+                    new Student(18,"Fatma",2.65),
+                    new Student(19,"Omer",3.10),
+                    new Student(20,"Filiz",1.45),
+                    new Student(21,"Mete",3.80),
+                    new Student(22,"Merve",2.20),
+                    new Student(23,"Semih",2.80)
+                };
+
+
+            foreach (var item in arr)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("------");
+
+            var newArr = new DataStructures
+                .Array
+                .Array<Student>(arr);
+
+            newArr.Add(new Student(24, "Mustafa", 3.90));
+
+            foreach (var item in newArr)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        private static void CustomTypeApp01()
+        {
+            var student1 = new Student(20, "Çalışkan Sema", 3.40);
+
+            var student = new Student()
+            {
+                Id = 10,
+                Name = " Eren ",
+                GPA = 1.30
+            };
+
+            Console.WriteLine(student);
+        }
         private static void HeapSortAlgorithmsApp()
         {
             var array = new sbyte[] { 16, 23, 44, 12, 55, 40, 6 };
