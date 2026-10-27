@@ -13,11 +13,117 @@ namespace Apps
     {
         static void Main(string[] args)
         {
-            
 
             Console.ReadKey();
         }
 
+        private static void HeapSortAlgorithmsApp()
+        {
+            var array = new sbyte[] { 16, 23, 44, 12, 55, 40, 6 };
+
+            Console.WriteLine("Sırasız dizi: ");
+            foreach (var item in array)
+            {
+                Console.Write($"{item,-5}");
+            }
+            Console.WriteLine();
+
+            var heap = new DataStructures.Heap.MinHeap<sbyte>(array);
+
+            Console.WriteLine("Sıralı dizi: ");
+            foreach (var item in heap)
+            {
+                Console.Write($"{heap.DeleteMinMax(),-5}");
+            }
+            Console.WriteLine();
+        }
+        private static void MergeSortAlgorithmApp()
+        {
+            var array = new sbyte[] { 16, 23, 44, 12, 55, 40, 6 };
+
+            Console.WriteLine("Sırasız dizi: ");
+            foreach (var item in array)
+            {
+                Console.Write($"{item,-5}");
+            }
+            Console.WriteLine();
+
+            DataStructures.SortingAlgorithms.MergeSort.Sort<sbyte>(array);
+
+            Console.WriteLine("Sıralı dizi: ");
+            foreach (var item in array)
+            {
+                Console.Write($"{item,-5}");
+            }
+            Console.WriteLine();
+        }
+        private static void QuickSortAlgorithmApp()
+        {
+            var array = new int[] { 16, 23, 44, 12, 55, 40, 6 };
+
+            Console.WriteLine("Sırasız dizi: ");
+            foreach (var item in array)
+            {
+                Console.Write($"{item,-5}");
+            }
+            Console.WriteLine();
+
+            DataStructures.SortingAlgorithms.QuickSort.Sort<int>(array);
+            Console.WriteLine("Sıralı dizi: ");
+            foreach (var item in array)
+            {
+                Console.Write($"{item,-5}");
+            }
+            Console.WriteLine();
+        }
+        private static void InsertionSortAlgorithmApp()
+        {
+            var array = new int[] { 16, 23, 44, 12, 55, 40, 6 };
+
+            Console.WriteLine("Sırasız dizi: ");
+            foreach (var item in array)
+            {
+                Console.Write($"{item,-5}");
+            }
+            Console.WriteLine();
+
+            DataStructures.SortingAlgorithms.InsertionSort.Sort<int>(array,
+                DataStructures.Shared.SortDirection.Descending);
+
+            Console.WriteLine("Sıralı dizi: ");
+            foreach (var item in array)
+            {
+                Console.Write($"{item,-5}");
+            }
+            Console.WriteLine();
+
+            DataStructures.SortingAlgorithms.InsertionSort.Sort<int>(array);
+            Console.WriteLine("Sıralı dizi: ");
+            foreach (var item in array)
+            {
+                Console.Write($"{item,-5}");
+            }
+            Console.WriteLine();
+        }
+        private static void BubbleSortAlgorithmsApp()
+        {
+            var array = new int[] { 16, 23, 44, 12, 55, 40, 6 };
+
+            Console.WriteLine("Sırasız dizi: ");
+            foreach (var item in array)
+            {
+                Console.Write($"{item,-5}");
+            }
+            Console.WriteLine();
+
+            DataStructures.SortingAlgorithms.BubbleSort.Sort<int>(array);
+
+            Console.WriteLine("sıralı dizi : ");
+            foreach (var item in array)
+            {
+                Console.Write($"{item,-5}");
+            }
+        }
         private static void SelectionSortAlgorithmsApp()
         {
             var array = new int[] { 16, 23, 44, 12, 55, 40, 6 };
@@ -28,13 +134,13 @@ namespace Apps
 
             Console.WriteLine();
 
-            DataStructures.SortingAlgorithms.SelectionSort.Sort<int>(array);
+            DataStructures.SortingAlgorithms.SelectionSort.Sort<int>(array,
+                DataStructures.Shared.SortDirection.Descending);
 
             Console.WriteLine("Sıralı dizi: ");
             foreach (var item in array)
                 Console.WriteLine($"{item,-5}");
         }
-
         private static void MinimumSpanningTreeKruksalAlgorithmApp()
         {
             var graph = new DataStructures

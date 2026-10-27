@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DataStructures.SortingAlgorithms
+{
+    public static class QuickSort
+    {
+        public static void Sort<T>(T[] array)
+            where T : IComparable
+        {
+            Sort(array, 0, array.Length - 1);
+        }
+        private static void Sort<T>(T[] array, int lower, int upper)
+            where T:IComparable
+        {
+            if (lower<upper)
+            {
+                int p1 = Partition<T>(array, lower, upper);
+                Sort(array, lower, p1);
+                Sort(array, p1 + 1, upper);
+            }
+        }
+        private static int Partition<T>(T[] array, int lower, int upper)
+            where T:IComparable
+        {
+            int i = lower;
+            int j = upper;
+
+            T pivot = array[lower];
+            do
+            {
+                while (array[i].CompareTo(pivot)<0){ i++; }
+                while (array[j].CompareTo(pivot) > 0) { j--; }
+
+                if (i >= j) break;
+
+                Sorting.Swap<T>(array, i, j);
+            } while (i<=j);
+
+            return j;
+        }
+    }
+}
